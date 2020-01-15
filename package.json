@@ -1,0 +1,68 @@
+{
+  "name": "parallax3d",
+  "version": "0.0.0",
+  "author": "Yomotsu",
+  "license": "MIT",
+  "main": "dist/parallax3d.js",
+  "jsnext:main": "dist/parallax3d.module.js",
+  "module": "dist/parallax3d.module.js",
+  "types": "dist/index.d.ts",
+  "repository": "yomotsu/parallax3d",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-config-mdcs": "^4.2.3",
+    "rollup": "^1.27.14",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "terser": "^4.4.3",
+    "three": "^0.112.1",
+    "typescript": "^3.7.4"
+  },
+  "scripts": {
+    "dev": "rollup --config --watch",
+    "build": "rollup --config && terser dist/parallax3d.js -o dist/parallax3d.min.js --comments '/^!/'",
+    "lint": "eslint src --ext ts"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 11"
+  ],
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": "mdcs",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "no-unused-vars": 0,
+      "@typescript-eslint/no-unused-vars": 1,
+      "indent": 0,
+      "@typescript-eslint/indent": [
+        "error",
+        "tab",
+        {
+          "SwitchCase": 1,
+          "flatTernaryExpressions": true
+        }
+      ],
+      "no-multi-spaces": [
+        0
+      ],
+      "key-spacing": [
+        0
+      ]
+    }
+  },
+  "keywords": [
+    "three",
+    "three.js",
+    "parallax"
+  ],
+  "dependencies": {
+    "in-view-observer": "^0.4.0",
+    "tween-values": "0.0.0"
+  }
+}

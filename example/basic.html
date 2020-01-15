@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>=^.^=</title>
+<style>
+@import url( "https://fonts.googleapis.com/css?family=Quintessential&display=swap" );
+
+body {
+  font-family: 'Quintessential', cursive;
+  background: url( "bg.jpg" ) 0 0 / 256px 256px;
+}
+
+.main {
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 300px;
+}
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+  margin: 0;
+}
+
+.carvedDecor {
+  height: 100px;
+}
+
+p {
+  font-size: 22px;
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.image1 {
+  float: left;
+  width: 200px;
+  margin: 20px 20px 20px 0;
+}
+
+.image1 img {
+  visibility: hidden;
+  display: block;
+  width: 100%;
+}
+
+.image2,
+.image3 {
+  float: right;
+  width: 400px;
+  width: 60%;
+  margin: 20px 0 20px 20px;
+}
+.image2 img,
+.image3 img {
+  visibility: hidden;
+  display: block;
+  width: 100%;
+}
+
+.pillars {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.pillar {
+  width: 100px;
+  height: 100px;
+}
+
+.dragon {
+  width: 200px;
+  height: 200px;
+  margin: 150px auto 0;
+}
+</style>
+</head>
+<body>
+
+<div class="main">
+
+<h1>Dragon</h1>
+
+<div class="carvedDecor"></div>
+
+<div class="image1">
+  <img src="img_01.svg" alt="">
+</div>
+
+<p>
+A dragon is a large, serpentine legendary creature that appears in the folklore of many cultures around the world. Beliefs about dragons vary drastically by region, but dragons in western cultures since the High Middle Ages have often been depicted as winged, horned, four-legged, and capable of breathing fire. Dragons in eastern cultures are usually depicted as wingless, four-legged, serpentine creatures with above-average intelligence.
+</p>
+
+<p>
+The earliest attested reports of draconic creatures resemble giant snakes. Draconic creatures are first described in the mythologies of the ancient Near East and appear in ancient Mesopotamian art and literature. Stories about storm-gods slaying giant serpents occur throughout nearly all Indo-European and Near Eastern mythologies. Famous prototypical draconic creatures include the mušḫuššu of ancient Mesopotamia; Apep in Egyptian mythology; Vṛtra in the Rigveda; the Leviathan in the Hebrew Bible; Python, Ladon, Wyvern, and the Lernaean Hydra in Greek mythology; Jörmungandr, Níðhöggr, and Fafnir in Norse mythology; and the dragon from Beowulf.
+</p>
+
+<div class="pillars">
+  <div class="pillar"></div>
+  <div class="pillar"></div>
+</div>
+
+<div class="image2">
+  <img src="img_02.jpg" alt="">
+</div>
+
+<p>
+The popular western image of a dragon as winged, four-legged, and capable of breathing fire is an invention of the High Middle Ages, based on a conflation of earlier dragons from different traditions, and of inaccurate scribal drawings of snakes. In western cultures, dragons are portrayed as monsters to be tamed or overcome, usually by saints or culture heroes, as in the popular legend of Saint George and the Dragon. They are often said to have ravenous appetites and to live in caves, where they hoard treasure. These dragons appear frequently in western fantasy literature, including The Hobbit by J. R. R. Tolkien, the Harry Potter series by J. K. Rowling, and A Song of Ice and Fire by George R. R. Martin.
+</p>
+
+<div class="image3">
+  <img src="img_03.jpg" alt="">
+</div>
+
+<p>
+The word "dragon" has also come to be applied to the Chinese lung (traditional 龍, simplified 龙, Pinyin long), which are associated with good fortune and are thought to have power over rain. Dragons and their associations with rain are the source of the Chinese customs of dragon dancing and dragon boat racing. Many East Asian deities and demigods have dragons as their personal mounts or companions. Dragons were also identified with the Emperor of China, who, during later Chinese imperial history, was the only one permitted to have dragons on his house, clothing, or personal articles.
+</p>
+
+
+<div class="pillars">
+  <div class="pillar"></div>
+  <div class="pillar"></div>
+</div>
+
+<p>
+Commonalities between dragons traits are often a hybridization of avian, feline, and reptilian features, and may include: snakelike features, reptilian scaly skin, four legs with three or four toes on each, spinal nodes running down the back, a tail, and a serrated jaw with rows of teeth. Several modern scholars believe huge extinct or migrating crocodiles bear the closest resemblance, especially when encountered in forested or swampy areas, and are most likely the template of modern dragon imagery.[1][2] This also fits with the ancient words 'Draco' and 'Drakon', meaning 'large serpent' or 'sea serpent.'
+</p>
+
+<div class="dragon"></div>
+
+<p>
+  <small>
+    <a href="https://sketchfab.com/3d-models/dragon-flying-cycle-ae0831702eac462a9969ff4f8bd57710">
+      Dragon Flying Cycle by RedCoreTimber (CC BY 4.0)
+    </a>
+  </small>
+</p>
+
+</div>
+
+<script src="https://unpkg.com/three@0.112.1/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.112.1/examples/js/loaders/GLTFLoader.js"></script>
+<script src="../dist/parallax3d.js"></script>
+<script>
+
+parallax3d.install( { THREE: THREE, GLTFLoader: THREE.GLTFLoader } );
+const field = new parallax3d.LayoutField();
+field.applyEnvMap( './hdri.png' );
+
+Array.prototype.forEach.call(
+  document.querySelectorAll( '.image1 img, .image2 img, .image3 img' ),
+  ( $img ) => {
+
+    const particleImage = new parallax3d.LayoutParticleImageObject( $img, $img );
+    field.add( particleImage );
+
+    particleImage.addEventListener( 'animationend', () => {
+
+      field.remove( particleImage );
+      $img.style.visibility = 'visible'
+
+    } );
+
+  }
+);
+
+const carvedDecor = new parallax3d.LayoutGLTFObject(
+  document.querySelector( '.carvedDecor' ),
+  './carved-decor.glb'
+);
+carvedDecor.object.rotation.x = Math.PI / 2;
+const carvedDecorHeight = carvedDecor.domSize.y * 1.2;
+carvedDecor.object.scale.set(
+  carvedDecorHeight,
+  carvedDecorHeight,
+  carvedDecorHeight
+);
+field.add( carvedDecor );
+
+
+Array.prototype.forEach.call(
+  document.querySelectorAll( '.pillars .pillar' ),
+  ( $div ) => {
+
+    const pillar = new parallax3d.LayoutGLTFObject(
+      $div,
+      './pillar.glb'
+    );
+    pillar.object.rotation.x = Math.PI / 2;
+
+    pillar.object.scale.set(
+      pillar.domSize.y,
+      pillar.domSize.y,
+      pillar.domSize.y
+    );
+    field.add( pillar );
+
+  }
+);
+
+
+const gltf = new parallax3d.LayoutGLTFObject(
+  document.querySelector( '.dragon' ),
+  './dragon.glb'
+);
+gltf.object.rotation.y = - Math.PI;
+gltf.object.rotation.x = Math.PI / 2;
+gltf.object.scale.set( 10, 10, 10 );
+field.add( gltf );
+
+
+</script>
+
+</body>
+</html>
